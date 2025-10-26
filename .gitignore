@@ -1,0 +1,29 @@
+# Visual Studio / IDE
+.vs/
+.vscode/
+
+# Build output
+bin/
+obj/
+
+# Compilados / temporales
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.tmp
+*.db
+*.vsidx
+*.db-shm
+*.db-wal
+
+# Archivos de usuario/IDE
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet caches
+project.assets.json
+project.nuget.cache
