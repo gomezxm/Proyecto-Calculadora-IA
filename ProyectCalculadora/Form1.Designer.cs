@@ -53,9 +53,9 @@
             // 
             lbl_CalculadoraBasica.AutoSize = true;
             lbl_CalculadoraBasica.Font = new Font("Segoe UI Emoji", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_CalculadoraBasica.Location = new Point(3, 24);
+            lbl_CalculadoraBasica.Location = new Point(3, 32);
             lbl_CalculadoraBasica.Name = "lbl_CalculadoraBasica";
-            lbl_CalculadoraBasica.Size = new Size(210, 32);
+            lbl_CalculadoraBasica.Size = new Size(261, 40);
             lbl_CalculadoraBasica.TabIndex = 0;
             lbl_CalculadoraBasica.Text = "Calculadora Básica";
             lbl_CalculadoraBasica.Click += lbl_CalculadoraBasica_Click;
@@ -63,18 +63,20 @@
             // txt_MostrarDatos
             // 
             txt_MostrarDatos.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_MostrarDatos.Location = new Point(14, 82);
+            txt_MostrarDatos.Location = new Point(16, 109);
+            txt_MostrarDatos.Margin = new Padding(3, 4, 3, 4);
             txt_MostrarDatos.Name = "txt_MostrarDatos";
-            txt_MostrarDatos.Size = new Size(258, 35);
+            txt_MostrarDatos.Size = new Size(294, 42);
             txt_MostrarDatos.TabIndex = 1;
             txt_MostrarDatos.TextChanged += txt_MostrarDatos_TextChanged;
             // 
             // btn_LimpiarTodo
             // 
             btn_LimpiarTodo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_LimpiarTodo.Location = new Point(14, 137);
+            btn_LimpiarTodo.Location = new Point(16, 183);
+            btn_LimpiarTodo.Margin = new Padding(3, 4, 3, 4);
             btn_LimpiarTodo.Name = "btn_LimpiarTodo";
-            btn_LimpiarTodo.Size = new Size(96, 39);
+            btn_LimpiarTodo.Size = new Size(110, 52);
             btn_LimpiarTodo.TabIndex = 2;
             btn_LimpiarTodo.Text = "C";
             btn_LimpiarTodo.UseVisualStyleBackColor = true;
@@ -83,168 +85,200 @@
             // btn_borrar
             // 
             btn_borrar.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_borrar.Location = new Point(116, 137);
+            btn_borrar.Location = new Point(133, 183);
+            btn_borrar.Margin = new Padding(3, 4, 3, 4);
             btn_borrar.Name = "btn_borrar";
-            btn_borrar.Size = new Size(95, 39);
+            btn_borrar.Size = new Size(109, 52);
             btn_borrar.TabIndex = 3;
             btn_borrar.Text = "←";
             btn_borrar.UseVisualStyleBackColor = true;
+            btn_borrar.Click += btn_borrar_Click;
             // 
             // btn_suma
             // 
             btn_suma.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_suma.Location = new Point(217, 138);
+            btn_suma.Location = new Point(248, 184);
+            btn_suma.Margin = new Padding(3, 4, 3, 4);
             btn_suma.Name = "btn_suma";
-            btn_suma.Size = new Size(55, 38);
+            btn_suma.Size = new Size(63, 51);
             btn_suma.TabIndex = 4;
             btn_suma.Text = "+";
             btn_suma.UseVisualStyleBackColor = true;
+            btn_suma.Click += btn_suma_Click;
             // 
             // btn_div
             // 
             btn_div.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_div.Location = new Point(217, 270);
+            btn_div.Location = new Point(248, 360);
+            btn_div.Margin = new Padding(3, 4, 3, 4);
             btn_div.Name = "btn_div";
-            btn_div.Size = new Size(55, 38);
+            btn_div.Size = new Size(63, 51);
             btn_div.TabIndex = 5;
             btn_div.Text = "/";
             btn_div.UseVisualStyleBackColor = true;
+            btn_div.Click += btn_div_Click;
             // 
             // btn_mult
             // 
             btn_mult.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_mult.Location = new Point(217, 226);
+            btn_mult.Location = new Point(248, 301);
+            btn_mult.Margin = new Padding(3, 4, 3, 4);
             btn_mult.Name = "btn_mult";
-            btn_mult.Size = new Size(55, 38);
+            btn_mult.Size = new Size(63, 51);
             btn_mult.TabIndex = 6;
             btn_mult.Text = "x";
             btn_mult.UseVisualStyleBackColor = true;
+            btn_mult.Click += btn_mult_Click;
             // 
             // btn_restar
             // 
             btn_restar.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_restar.Location = new Point(217, 182);
+            btn_restar.Location = new Point(248, 243);
+            btn_restar.Margin = new Padding(3, 4, 3, 4);
             btn_restar.Name = "btn_restar";
-            btn_restar.Size = new Size(55, 38);
+            btn_restar.Size = new Size(63, 51);
             btn_restar.TabIndex = 7;
             btn_restar.Text = "-";
             btn_restar.UseVisualStyleBackColor = true;
+            btn_restar.Click += btn_restar_Click;
             // 
             // btn_resultado
             // 
             btn_resultado.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_resultado.Location = new Point(217, 314);
+            btn_resultado.Location = new Point(248, 419);
+            btn_resultado.Margin = new Padding(3, 4, 3, 4);
             btn_resultado.Name = "btn_resultado";
-            btn_resultado.Size = new Size(55, 38);
+            btn_resultado.Size = new Size(63, 51);
             btn_resultado.TabIndex = 8;
             btn_resultado.Text = "=";
             btn_resultado.UseVisualStyleBackColor = true;
+            btn_resultado.Click += btn_resultado_Click;
             // 
             // btn_siete
             // 
             btn_siete.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_siete.Location = new Point(14, 182);
+            btn_siete.Location = new Point(16, 243);
+            btn_siete.Margin = new Padding(3, 4, 3, 4);
             btn_siete.Name = "btn_siete";
-            btn_siete.Size = new Size(55, 38);
+            btn_siete.Size = new Size(63, 51);
             btn_siete.TabIndex = 9;
             btn_siete.Text = "7";
             btn_siete.UseVisualStyleBackColor = true;
+            btn_siete.Click += btn_siete_Click;
             // 
             // btn_ocho
             // 
             btn_ocho.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_ocho.Location = new Point(84, 182);
+            btn_ocho.Location = new Point(96, 243);
+            btn_ocho.Margin = new Padding(3, 4, 3, 4);
             btn_ocho.Name = "btn_ocho";
-            btn_ocho.Size = new Size(55, 38);
+            btn_ocho.Size = new Size(63, 51);
             btn_ocho.TabIndex = 10;
             btn_ocho.Text = "8";
             btn_ocho.UseVisualStyleBackColor = true;
+            btn_ocho.Click += btn_ocho_Click;
             // 
             // button3
             // 
             button3.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            button3.Location = new Point(156, 182);
+            button3.Location = new Point(178, 243);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(55, 38);
+            button3.Size = new Size(63, 51);
             button3.TabIndex = 11;
             button3.Text = "9";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // btn_cinco
             // 
             btn_cinco.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_cinco.Location = new Point(84, 226);
+            btn_cinco.Location = new Point(96, 301);
+            btn_cinco.Margin = new Padding(3, 4, 3, 4);
             btn_cinco.Name = "btn_cinco";
-            btn_cinco.Size = new Size(55, 38);
+            btn_cinco.Size = new Size(63, 51);
             btn_cinco.TabIndex = 12;
             btn_cinco.Text = "5";
             btn_cinco.UseVisualStyleBackColor = true;
+            btn_cinco.Click += btn_cinco_Click;
             // 
             // btn_seis
             // 
             btn_seis.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_seis.Location = new Point(156, 226);
+            btn_seis.Location = new Point(178, 301);
+            btn_seis.Margin = new Padding(3, 4, 3, 4);
             btn_seis.Name = "btn_seis";
-            btn_seis.Size = new Size(55, 38);
+            btn_seis.Size = new Size(63, 51);
             btn_seis.TabIndex = 13;
             btn_seis.Text = "6";
             btn_seis.UseVisualStyleBackColor = true;
+            btn_seis.Click += btn_seis_Click;
             // 
             // btn_tres
             // 
             btn_tres.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_tres.Location = new Point(156, 270);
+            btn_tres.Location = new Point(178, 360);
+            btn_tres.Margin = new Padding(3, 4, 3, 4);
             btn_tres.Name = "btn_tres";
-            btn_tres.Size = new Size(55, 38);
+            btn_tres.Size = new Size(63, 51);
             btn_tres.TabIndex = 14;
             btn_tres.Text = "3";
             btn_tres.UseVisualStyleBackColor = true;
+            btn_tres.Click += btn_tres_Click;
             // 
             // btn_dos
             // 
             btn_dos.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_dos.Location = new Point(84, 270);
+            btn_dos.Location = new Point(96, 360);
+            btn_dos.Margin = new Padding(3, 4, 3, 4);
             btn_dos.Name = "btn_dos";
-            btn_dos.Size = new Size(55, 38);
+            btn_dos.Size = new Size(63, 51);
             btn_dos.TabIndex = 15;
             btn_dos.Text = "2";
             btn_dos.UseVisualStyleBackColor = true;
+            btn_dos.Click += btn_dos_Click;
             // 
             // btn_uno
             // 
             btn_uno.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_uno.Location = new Point(14, 270);
+            btn_uno.Location = new Point(16, 360);
+            btn_uno.Margin = new Padding(3, 4, 3, 4);
             btn_uno.Name = "btn_uno";
-            btn_uno.Size = new Size(55, 38);
+            btn_uno.Size = new Size(63, 51);
             btn_uno.TabIndex = 16;
             btn_uno.Text = "1";
             btn_uno.UseVisualStyleBackColor = true;
+            btn_uno.Click += btn_uno_Click;
             // 
             // btn_cuatro
             // 
             btn_cuatro.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_cuatro.Location = new Point(14, 226);
+            btn_cuatro.Location = new Point(16, 301);
+            btn_cuatro.Margin = new Padding(3, 4, 3, 4);
             btn_cuatro.Name = "btn_cuatro";
-            btn_cuatro.Size = new Size(55, 38);
+            btn_cuatro.Size = new Size(63, 51);
             btn_cuatro.TabIndex = 17;
             btn_cuatro.Text = "4";
             btn_cuatro.UseVisualStyleBackColor = true;
+            btn_cuatro.Click += btn_cuatro_Click;
             // 
             // btn_cero
             // 
             btn_cero.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            btn_cero.Location = new Point(14, 314);
+            btn_cero.Location = new Point(16, 419);
+            btn_cero.Margin = new Padding(3, 4, 3, 4);
             btn_cero.Name = "btn_cero";
-            btn_cero.Size = new Size(197, 38);
+            btn_cero.Size = new Size(225, 51);
             btn_cero.TabIndex = 18;
             btn_cero.Text = "0";
             btn_cero.UseVisualStyleBackColor = true;
+            btn_cero.Click += btn_cero_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(289, 363);
+            ClientSize = new Size(330, 484);
             Controls.Add(btn_cero);
             Controls.Add(btn_cuatro);
             Controls.Add(btn_uno);
@@ -264,8 +298,10 @@
             Controls.Add(btn_LimpiarTodo);
             Controls.Add(txt_MostrarDatos);
             Controls.Add(lbl_CalculadoraBasica);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Calculadora";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
