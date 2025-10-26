@@ -265,7 +265,7 @@
             Controls.Add(txt_MostrarDatos);
             Controls.Add(lbl_CalculadoraBasica);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Calculadora";
             ResumeLayout(false);
             PerformLayout();
         }
