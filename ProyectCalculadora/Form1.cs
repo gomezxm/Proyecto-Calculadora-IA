@@ -35,6 +35,14 @@ namespace ProyectCalculadora
 
         private void btn_resultado_Click(object sender, EventArgs e)
         {
+            // 💡 MEJORA: Validar si el campo de datos está completamente vacío.
+            if (string.IsNullOrWhiteSpace(txt_MostrarDatos.Text))
+            {
+                MessageBox.Show("Ingrese datos", "Advertencia");
+                return; // Detiene la ejecución si el campo está vacío.
+            }
+
+            // El resto de las validaciones ahora se ejecutan solo si hay texto.
             bool blValidarOperadoresConsecutivos = validarOperadoresConsecutivos(); // VALIDAR QUE NO HAYA OPERADORES CONSECUTIVOS
             bool blUnPuntoDecimal = unPuntoDecimal(); // VALIDAR LA CANTIDAD DE DECIMALES
             bool blValidarCeroDivision = validarCeroDivision(); // VALIDAR QUE NO HAYA DIVISION ENTRE CERO
@@ -46,6 +54,7 @@ namespace ProyectCalculadora
             bool blValidarLongitud = limitarLongitud(); // VALIDAR LA LONGITUD MAXIMA DE DIGITOS
             bool blvalidarEmpezarDigito = validarEmpezarDigito(); // VALIDAR QUE EMPIECE CON UN DIGITO
             bool blContarDiferencia = contarDiferencia(); // VALIDAR QUE LA CANTIDAD DE OPERADORES NO SEA MAYOR O IGUAL A LA
+            
             if (blUnPuntoDecimal && blValidarInicioCero && blValidarOperadoresConsecutivos && blValidarCeroDivision && blValidarEspaciosVacios && blValidarCaracteresInvalidos && blValidarSoloOperadores && blValidarLongitud && blvalidarEmpezarDigito
                 && blContarDiferencia)
             {
@@ -367,58 +376,69 @@ namespace ProyectCalculadora
 
        // Manejador de eventos para restringir la entrada directa por teclado.
         // Manejador de eventos para restringir la entrada directa por teclado.
-private void txt_MostrarDatos_KeyPress(object sender, KeyPressEventArgs e)
-{
-    char tecla = e.KeyChar;
-    string texto = txt_MostrarDatos.Text;
+        private void txt_MostrarDatos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char tecla = e.KeyChar;
+            string texto = txt_MostrarDatos.Text;
 
-    // 1. **VALIDACIÓN EXTREMADAMENTE ESTRICTA**:
-    // Permitir SÓLO: Dígitos, Operadores (+-*/), Punto decimal (.), y Teclas de Control (Backspace, Enter).
-    // Esto BLOQUEARÁ los guiones bajos, letras, paréntesis y cualquier otro símbolo.
-    if (!char.IsDigit(tecla) && !"+-*/.".Contains(tecla) && !char.IsControl(tecla))
-    {
-        e.Handled = true; 
-        return; 
-    }
-    
-    // 2. Si es un operador, bloqueamos la tecla y llamamos a la lógica centralizada.
-    if ("+-*/".Contains(tecla))
-    {
-        e.Handled = true; 
-        HandleOperatorClick(tecla.ToString());
-        return; 
-    }
-    
-    // 3. Lógica específica para el punto decimal (Mantenida)
-    if (tecla == '.')
-    {
-        e.Handled = true; 
-        
-        string[] partes = texto.Split(new char[] { '+', '-', '*', '/' });
-        string ultimaParte = partes.LastOrDefault();
-        
-        // Inserta "0." si el campo está vacío o después de un operador.
-        if (string.IsNullOrEmpty(texto) || "+-*/".Contains(texto.LastOrDefault()))
-        {
-             if (txt_MostrarDatos.SelectionLength > 0)
-             {
-                 txt_MostrarDatos.Text = txt_MostrarDatos.Text.Remove(txt_MostrarDatos.SelectionStart, txt_MostrarDatos.SelectionLength);
-             }
-             txt_MostrarDatos.AppendText("0.");
+            // 1. **VALIDACIÓN EXTREMADAMENTE ESTRICTA**:
+            // Permitir SÓLO: Dígitos, Operadores (+-*/), Punto decimal (.), y Teclas de Control (Backspace, Enter).
+            // Esto BLOQUEARÁ los guiones bajos, letras, paréntesis y cualquier otro símbolo.
+            if (!char.IsDigit(tecla) && !"+-*/.".Contains(tecla) && !char.IsControl(tecla))
+            {
+                e.Handled = true; 
+                return; 
+            }
+            
+            // 2. Si es un operador, bloqueamos la tecla y llamamos a la lógica centralizada.
+            if ("+-*/".Contains(tecla))
+            {
+                e.Handled = true; 
+                HandleOperatorClick(tecla.ToString());
+                return; 
+            }
+            
+            // 3. Lógica específica para el punto decimal (Mantenida)
+            if (tecla == '.')
+            {
+                e.Handled = true; 
+                
+                string[] partes = texto.Split(new char[] { '+', '-', '*', '/' });
+                string ultimaParte = partes.LastOrDefault();
+                
+                // Inserta "0." si el campo está vacío o después de un operador.
+                if (string.IsNullOrEmpty(texto) || "+-*/".Contains(texto.LastOrDefault()))
+                {
+                    if (txt_MostrarDatos.SelectionLength > 0)
+                    {
+                        txt_MostrarDatos.Text = txt_MostrarDatos.Text.Remove(txt_MostrarDatos.SelectionStart, txt_MostrarDatos.SelectionLength);
+                    }
+                    txt_MostrarDatos.AppendText("0.");
+                }
+                // Inserta "." si el número actual no contiene un punto.
+                else if (ultimaParte != null && !ultimaParte.Contains("."))
+                {
+                    txt_MostrarDatos.AppendText(".");
+                }
+            }
         }
-        // Inserta "." si el número actual no contiene un punto.
-        else if (ultimaParte != null && !ultimaParte.Contains("."))
-        {
-            txt_MostrarDatos.AppendText(".");
-        }
-    }
-}
 
        void operacion()
         {
             try
             {
-                txt_MostrarDatos.Text = new DataTable().Compute(txt_MostrarDatos.Text, null).ToString();
+                // 💡 MEJORA: Eliminar todos los espacios en blanco del texto antes de calcular.
+                string expresionLimpia = txt_MostrarDatos.Text.Replace(" ", string.Empty);
+
+                // Además, verifica si la expresión quedó vacía después de limpiar.
+                if (string.IsNullOrEmpty(expresionLimpia))
+                {
+                    MessageBox.Show("Ingrese una operación válida.", "Error");
+                    txt_MostrarDatos.Clear();
+                    return;
+                }
+
+                txt_MostrarDatos.Text = new DataTable().Compute(expresionLimpia, null).ToString();
             }
             catch (Exception ex)
             {
