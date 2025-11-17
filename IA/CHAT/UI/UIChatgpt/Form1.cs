@@ -17,9 +17,14 @@ namespace UIChatgpt
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEnviar_Click(object sender, EventArgs e)
         {
+           
+        }
 
+        private void txtPrompt_Click(object sender, EventArgs e)
+        {
+            txtPrompt.Text = "";
         }
     }
 }
